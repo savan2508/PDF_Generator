@@ -40,4 +40,18 @@ for filepath in filepaths:
         pdf.cell(30, 8, txt=f"{row['price_per_unit']}", border=1)
         pdf.cell(30, 8, txt=f"{row['total_price']}",border=1, ln=1)
 
+    pdf.cell(30, 8, txt=f"", border=1)
+    pdf.cell(70, 8, txt=f"", border=1)
+    pdf.cell(30, 8, txt=f"", border=1)
+    pdf.cell(30, 8, txt=f"", border=1)
+    pdf.cell(30, 8, txt=f"{df['total_price'].sum()}", border=1, ln=1)
+
+    # Add total sum sentence
+    pdf.set_font(family="Arial", size=10)
+    pdf.cell(0, 12, txt=f"Total: {df['total_price'].sum()}", align="R", ln=1)
+
+    # Add company details and logo
+    pdf.cell(0, 12, txt=f"Company Name: Python", align="L", ln=1)
+    pdf.image("Python-logo-notext.svg.png", w=10, h=10)
+
     pdf.output(f"PDFs/{filename}.pdf")
